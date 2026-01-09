@@ -4,7 +4,7 @@
 # Stage 1: Build stage with Maven
 FROM maven:3.9-eclipse-temurin-17-alpine AS builder
 
-WORKDIR /app
+WORKDIR /java-app/demo
 
 # Copy pom.xml first to leverage Docker cache
 COPY pom.xml .
