@@ -4,7 +4,7 @@
 # Stage 1: Build stage with Maven
 FROM maven:3.9-eclipse-temurin-17-alpine AS builder
 
-WORKDIR /java-app/demo
+WORKDIR java-app/demo/
 
 # Copy pom.xml first to leverage Docker cache
 COPY pom.xml .
@@ -21,7 +21,7 @@ RUN mvn clean package -B
 # Stage 2: Runtime stage with JRE only
 FROM eclipse-temurin:17-jre-alpine
 
-WORKDIR /app
+WORKDIR java-app/demo/
 
 # Create non-root user for security
 RUN addgroup -S appgroup && adduser -S appuser -G appgroup
